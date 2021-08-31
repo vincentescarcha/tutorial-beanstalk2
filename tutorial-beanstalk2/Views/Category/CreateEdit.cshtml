@@ -1,0 +1,54 @@
+﻿@model Shop.Web.Models.Category.CategoryListingModel
+
+<div class="row">
+    <h3 class="text-center" style="margin-bottom:32px;">Fill out the fields to @ViewBag.ActionText category</h3>
+    <div class="col-md-offset-3 col-md-8">
+        <div class="row orderForm ">
+            
+            <form asp-action="@ViewBag.Action" method="post" class="form-horizontal col-md-8" role="form">
+                <div class="form-group">
+                    <label asp-for="Name" class="col-md-3 control-label"></label>
+                    <div class="col-md-6">
+                        <input asp-for="Name" class="form-control" />
+                        <span asp-validation-for="Name" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Description" class="col-md-3 control-label"></label>
+                    <div class="col-md-6">
+                        <textarea asp-for="Description" class="form-control"></textarea>
+                        <span asp-validation-for="Description" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="ImageUrl" class="col-md-3 control-label"></label>
+                    <div class="col-md-6">
+                        <input onkeyup="readUrl(this,'CategoryImage');" asp-for="ImageUrl" class="form-control" />
+                        <span asp-validation-for="ImageUrl" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="btn-group col-md-4">
+                        @if(ViewBag.ActionText == "change")
+                        {
+                            <a class="btn btn-default" asp-action="@ViewBag.CancelAction" asp-controller="Category" asp-route-id="@ViewBag.RouteId">Cancel</a>
+                        }
+                        else
+                        {
+                            <a class="btn btn-default" asp-action="@ViewBag.CancelAction" asp-controller="Category">Cancel</a>
+                        }
+                    </div>
+                    <div class="btn-group col-md-offset-4 col-md-4">
+                        <input class="btn btn-success" type="submit" value="@ViewBag.SubmitText" />
+                    </div>
+                </div>
+            </form>
+            <div class="col-md-4">
+                <div >
+                    <img id="CategoryImage"  src= "@Url.Content(Model?.ImageUrl)" alt="Invalid Url" width="300" heigth="300"/>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

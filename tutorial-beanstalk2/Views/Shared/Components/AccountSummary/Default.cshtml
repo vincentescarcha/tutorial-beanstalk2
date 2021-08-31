@@ -1,0 +1,16 @@
+@model Shop.Web.Models.Account.AccountSummaryModel
+
+<div class="btn-group"> 
+    <a asp-action="Profile" asp-controller="Account" style="padding:0; text-decoration: none;font-weight: bold;color:rgba(0,0,0,0.9);font-size: 18px;">
+        <img src="@Model.ImageUrl" class="profile-img-summary">
+        @Model.Name
+    </a>
+    <a class="dropdown-toggle dropdown-toggle-split" style="padding-top:12px; font-size:20px;" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></a>
+    <div class="dropdown-menu account-dropdown" style="padding:8px; text-align:right;font-size:16px;">
+        <a class="dropdown-item" asp-action="Profile" asp-controller="Account">Profile <i class="fas fa-user-circle"></i></a>
+        <div class="dropdown-divider"></div>
+        <a class="dropdown-item" asp-action="Settings" asp-controller="Account">Settings <i class="fas fa-cogs"></i></a>
+        <div class="dropdown-divider"></div>
+        <a class="dropdown-item" asp-action="Logout" asp-controller="Account">Log out <i class="fas fa-sign-out-alt"></i></a>
+    </div>
+</div>
