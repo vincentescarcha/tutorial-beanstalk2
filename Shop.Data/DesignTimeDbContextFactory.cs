@@ -17,8 +17,8 @@ namespace Shop.Data
                 .AddJsonFile("appsettings.Development.json")
                 .Build();
             var builder = new DbContextOptionsBuilder<ApplicationDbContext>();
-            var connectionString = configuration.GetConnectionString("DefaultConnection");
-            builder.UseSqlServer(connectionString);
+            var connectionString = configuration.GetConnectionString("MySqlConnection");
+            builder.UseMySql(connectionString: connectionString, ServerVersion.AutoDetect(connectionString));
             return new ApplicationDbContext(builder.Options);
         }
     }
