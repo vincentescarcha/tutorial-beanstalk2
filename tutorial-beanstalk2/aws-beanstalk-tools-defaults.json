@@ -2,10 +2,17 @@
   "comment": "This file is used to help set default values when using the dotnet CLI extension Amazon.ElasticBeanstalk.Tools. For more information run \"dotnet eb --help\" from the project root.",
   "profile": "vincent-aws-vs-profile",
   "region": "ap-east-1",
-  "application": "DotNetCoreTest",
-  "environment": "Dotnetcoretest-env",
+  "application": "tutorialbeanstalk2",
+  "environment": "shop-vincent-test",
   "solution-stack": "64bit Windows Server 2016 v2.7.0 running IIS 10.0",
   "iis-website": "Default Web Site",
   "app-path": "/",
-  "enable-xray": false
+  "enable-xray": false,
+  "cname": "shop-vincent-test",
+  "environment-type": "LoadBalanced",
+  "instance-profile": "aws-elasticbeanstalk-ec2-role",
+  "service-role": "aws-elasticbeanstalk-service-role",
+  "health-check-url": "/",
+  "instance-type": "t3.micro",
+  "key-pair": "keypair-1-vincent"
 }

@@ -18,9 +18,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="keypair-1-vincent.pem">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
+    <None Include="wwwroot\*"/>
   </ItemGroup>
 
 </Project>
