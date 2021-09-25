@@ -38,8 +38,8 @@ namespace Shop.Web.Controllers
         }
 
         [HttpGet]
-        [Route("/ShoppingCart/Add/{id?}")]
-        public IActionResult Add(int id, [FromQuery] string returnUrl, [FromQuery] int? amount = 1)
+        [Route("ShoppingCart/Add/{id?}")]
+        public IActionResult Add([FromRoute] int id, [FromQuery] string? returnUrl, [FromQuery] int? amount = 1)
         {
             var food = _foodService.GetById(id);
             returnUrl = returnUrl?.Replace("%2F", "/");

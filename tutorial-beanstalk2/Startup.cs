@@ -33,10 +33,10 @@ namespace tutorial_beanstalk2
         {
             services.AddControllersWithViews();
 
-            //services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("MSSqlConnection")));
+            services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("MSSqlConnection")));
 
-            string conn = Configuration.GetConnectionString("MySqlConnection");
-            services.AddDbContext<ApplicationDbContext>(options => options.UseMySql(connectionString: conn, ServerVersion.AutoDetect(conn)));
+            //string conn = Configuration.GetConnectionString("MySqlConnection");
+            //services.AddDbContext<ApplicationDbContext>(options => options.UseMySql(connectionString: conn, ServerVersion.AutoDetect(conn)));
 
             services.AddIdentity<ApplicationUser, IdentityRole>(
                options =>
