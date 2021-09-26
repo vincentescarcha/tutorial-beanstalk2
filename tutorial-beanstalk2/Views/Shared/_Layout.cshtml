@@ -59,6 +59,13 @@
                     <a class="nav-link" asp-controller="Account" asp-action="Register">New User</a>
                 </li>
             }
+            @if (User.Identity.IsAuthenticated)
+            {
+                <!-- TODO: Remove for debugging only -->
+                <li class="nav-item">
+                    <a class="nav-link">User is Authenticated</a>
+                </li>
+            }
         </ul>
         <form class="form-inline">
             @if(SignInManager.IsSignedIn(User))

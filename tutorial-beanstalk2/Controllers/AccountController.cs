@@ -183,7 +183,7 @@ namespace Shop.Web.Controllers
                     await _userManager.AddToRoleAsync(user, "Customer");
                     if(!_signInManager.IsSignedIn(User) )
                     {
-                        await _signInManager.PasswordSignInAsync(user, register.Password, false,false);
+                        var response = await _signInManager.PasswordSignInAsync(user, register.Password, false,false);
                     }
                     if(!string.IsNullOrEmpty(register.ReturnUrl))
                     {

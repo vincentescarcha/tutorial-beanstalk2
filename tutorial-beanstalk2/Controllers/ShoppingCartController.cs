@@ -6,7 +6,7 @@ using Shop.Web.Models.ShoppingCart;
 
 namespace Shop.Web.Controllers
 {
-    [Authorize]
+    //[Authorize]
     public class ShoppingCartController : Controller
     {
         private readonly IFood _foodService;
@@ -37,7 +37,7 @@ namespace Shop.Web.Controllers
             return View("Index", model);
         }
 
-        [HttpGet]
+        [HttpPost]
         [Route("/ShoppingCart/Add/{id?}")]
         public IActionResult Add(int id, [FromQuery] string returnUrl, [FromQuery] int? amount = 1)
         {

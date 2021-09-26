@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
 using Shop.Data;
 using Shop.Data.Models;
 using Shop.Web.DataMapper;
@@ -10,6 +11,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace Shop.Web.Controllers
 {
@@ -18,16 +20,23 @@ namespace Shop.Web.Controllers
 
         private readonly IFood _foodService;
         private readonly Mapper _mapper;
+        private readonly SignInManager<ApplicationUser> _signInManager;
 
-        public HomeController(IFood foodService)
+        public HomeController(IFood foodService, SignInManager<ApplicationUser> signInManager)
         {
             _foodService = foodService;
+            _signInManager = signInManager;
             _mapper = new Mapper();
         }
 
         [Route("/")]
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
+            // TODO: Remove for debugging only
+            if (!User.Identity.IsAuthenticated)
+            {
+                await _signInManager.PasswordSignInAsync("testes@test.com", "Test123", false, false);
+            }
             var preferedFoods = _foodService.GetPreferred(10);
             var model = _mapper.FoodsToHomeIndexModel(preferedFoods);
             return View(model);
