@@ -6,7 +6,7 @@ using Shop.Web.Models.ShoppingCart;
 
 namespace Shop.Web.Controllers
 {
-    //[Authorize]
+    [Authorize]
     public class ShoppingCartController : Controller
     {
         private readonly IFood _foodService;
