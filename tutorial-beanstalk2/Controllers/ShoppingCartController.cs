@@ -37,7 +37,7 @@ namespace Shop.Web.Controllers
             return View("Index", model);
         }
 
-        [HttpGet]
+        [HttpPost]
         [Route("ShoppingCart/Add/{id?}")]
         public IActionResult Add([FromRoute] int id, [FromQuery] string? returnUrl, [FromQuery] int? amount = 1)
         {
