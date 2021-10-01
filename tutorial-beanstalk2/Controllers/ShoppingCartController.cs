@@ -39,7 +39,7 @@ namespace Shop.Web.Controllers
 
         [HttpPost]
         [Route("ShoppingCart/Add/{id?}")]
-        public IActionResult Add([FromRoute] int id, [FromQuery] string? returnUrl, [FromQuery] int? amount = 1)
+        public IActionResult Add([FromRoute] int id, [FromForm] string? returnUrl, [FromForm] int? amount = 1)
         {
             var food = _foodService.GetById(id);
             returnUrl = returnUrl?.Replace("%2F", "/");
