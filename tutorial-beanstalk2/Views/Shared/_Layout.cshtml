@@ -31,7 +31,7 @@
 </head>
 <body class="@ViewBag.BodyClass d-flex flex-column h-100">
     <nav class="navbar navbar-expand-lg navbar-light fixed-top" style="background-color: #f8f8f8;">
-        <a asp-controller="Home" asp-action="Index" class="navbar-brand">
+        <a href="@Url.Action("Index", "Home")" class="navbar-brand">
             <img src="/images/logo.png" width="140">
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor03" aria-controls="navbarColor03" aria-expanded="false" aria-label="Toggle navigation">
@@ -41,21 +41,21 @@
         <div class="collapse navbar-collapse" id="navbarColor03">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
-                    <a class="nav-link" asp-controller="Category" asp-action="Index">Categories</a>
+                    <a class="nav-link" href="@Url.Action("Index", "Category")">Categories</a>
                 </li>
                 @if (User.IsInRole("Admin"))
                 {
                     <li class="nav-item">
-                        <a class="nav-link" asp-controller="Account" asp-action="Index">Users</a>
+                        <a class="nav-link" href="@Url.Action("Index", "Account")">Users</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" asp-controller="Food" asp-action="New">New Food</a>
+                        <a class="nav-link" href="@Url.Action("New", "Food")">New Food</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" asp-controller="Category" asp-action="New">New Category</a>
+                        <a class="nav-link" href="@Url.Action("New", "Category")">New Category</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" asp-controller="Account" asp-action="Register">New User</a>
+                        <a class="nav-link" href="@Url.Action("Register", "Account")">New User</a>
                     </li>
                 }
             </ul>
@@ -73,27 +73,29 @@
         </div>
     </nav>
     <div class="container body-content flex-shrink-0">
+        <!-- RenderBody() -->
         @RenderBody()
+        <!-- END RenderBody() -->
     </div>
     <!-- Footer -->
     <footer id="myFooter" class="page-footer">
         <div class="container">
             <div class="row">
                 <div class="col-sm-3">
-                    <a style="width: 100%;height: 150px;margin-top: 0px;" asp-controller="Home" asp-action="Index" class="navbar-brand navLogo footerLogo"></a>
+                    <a style="width: 100%;height: 150px;margin-top: 0px;" href="@Url.Action("Index", "Home")" class="navbar-brand navLogo footerLogo"></a>
                 </div>
                 <div class="col-sm-2">
                     <h5>Get started</h5>
                     <ul>
-                        <li><a asp-action="Index" asp-controller="Home">Home</a></li>
+                        <li><a href="@Url.Action("Index", "Home")">Home</a></li>
                         @if (SignInManager.IsSignedIn(User))
                         {
-                            <li><a class="btn-link" asp-controller="Account" asp-action="Logout">Log out</a></li>
+                            <li><a class="btn-link" href="@Url.Action("Logout", "Account")">Log out</a></li>
                         }
                         else
                         {
-                            <li><a asp-action="Login" asp-controller="Account">Sign in</a></li>
-                            <li><a asp-action="Register" asp-controller="Account">Sign up</a></li>
+                            <li><a href="@Url.Action("Login", "Account")">Sign in</a></li>
+                            <li><a href="@Url.Action("Register", "Account")">Sign up</a></li>
                         }
                     </ul>
                 </div>
@@ -124,7 +126,7 @@
             </div>
         </div>
         <div class="footer-copyright">
-            <p>© 2019 BuyNow - Online Food Shop </p>
+            <p>© @DateTime.Now.Year BuyNow - Online Food Shop </p>
         </div>
     </footer>
     <!-- Footer -->
@@ -161,7 +163,7 @@
             target.value = val;
 
             let totalInt = val * parseFloat(total.substring(1));
-            output.value = ('$' + totalInt).substring(0, 6);
+            output.value = ('₱' + totalInt).substring(0, 6);
         }
 
         function readUrl(input, id) {

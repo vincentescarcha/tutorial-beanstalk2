@@ -47,6 +47,7 @@ namespace Shop.Web.Controllers
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
 
+        [HttpPost("/search")]
         public IActionResult Search(string searchQuery)
         {
             if (string.IsNullOrWhiteSpace(searchQuery) || string.IsNullOrEmpty(searchQuery))

@@ -1,4 +1,5 @@
 ﻿using Shop.Web.Models.Category;
+using System;
 using System.Globalization;
 
 namespace Shop.Web.Models.Food
@@ -8,7 +9,7 @@ namespace Shop.Web.Models.Food
         public int Id { get; set; }
         public string Name { get; set; }
         public decimal Price { get; set; }
-        public string Total { get => (Price * Amount).ToString("c", CultureInfo.CreateSpecificCulture("en-US")) ; }
+        public string Total { get => String.Format("\u20B1{0}", (Price * Amount)); }
         public int InStock { get; set; }
         public string ImageUrl { get; set; }
         public string ShortDescription { get; set; }
