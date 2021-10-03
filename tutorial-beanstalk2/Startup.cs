@@ -32,11 +32,12 @@ namespace tutorial_beanstalk2
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews().AddRazorRuntimeCompilation();
+            // for local
+            //services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("MSSqlConnection")));
 
-            services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("MSSqlConnection")));
-
-            //string conn = Configuration.GetConnectionString("MySqlConnection");
-            //services.AddDbContext<ApplicationDbContext>(options => options.UseMySql(connectionString: conn, ServerVersion.AutoDetect(conn)));
+            // for test env
+            string conn = Configuration.GetConnectionString("MySqlConnection");
+            services.AddDbContext<ApplicationDbContext>(options => options.UseMySql(connectionString: conn, ServerVersion.AutoDetect(conn)));
 
             services.AddIdentity<ApplicationUser, IdentityRole>(
                options =>
@@ -74,14 +75,14 @@ namespace tutorial_beanstalk2
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env, IServiceProvider serviceProvider)
         {
-            if (env.IsDevelopment())
-            {
+            //if (env.IsDevelopment())
+            //{
                 app.UseDeveloperExceptionPage();
-            }
-            else
-            {
-                app.UseExceptionHandler("/Home/Error");
-            }
+            //}
+            //else
+            //{
+            //    app.UseExceptionHandler("/Home/Error");
+            //}
             app.UseStaticFiles();
 
             DbInitializer.Seed(app);
