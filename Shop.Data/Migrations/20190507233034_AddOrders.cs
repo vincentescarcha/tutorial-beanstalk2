@@ -37,7 +37,8 @@ namespace Shop.Data.Migrations
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn)
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     AddressLine1 = table.Column<string>(maxLength: 100, nullable: false),
                     AddressLine2 = table.Column<string>(nullable: true),
                     Country = table.Column<string>(maxLength: 50, nullable: false),
@@ -68,7 +69,8 @@ namespace Shop.Data.Migrations
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn)
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     Amount = table.Column<int>(nullable: false),
                     FoodId = table.Column<int>(nullable: false),
                     OrderId = table.Column<int>(nullable: false),
